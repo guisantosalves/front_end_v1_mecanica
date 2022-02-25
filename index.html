@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+      body {
+        background-color: grey;
+      }
+    </style>
+    <title>Mecânica Alves</title>
+  </head>
+  <body>
+    <!--Barra de navegação-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Mecânica Alves</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(Página atual)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cadastrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Relatório</a>
+          </li>
+        </ul>
+      <ul class="navbar-nav">
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-terminal"></i>R$ 250000</a></li>
+          <li class="nav-item"><i class="fas fa-terminal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+              Inserir caixa
+            </button>
+          </i></li>
+      </ul>
+          
+      </div>
+    </nav>
+
+    
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Inserindo valor do caixa</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="nome_insercao">Nome do chefe: </label>
+                <input type="text" class="form-control" id="nome_insercao" placeholder="Ex: Eudes">
+                <small class="form-text text-muted">Ficará gravado quem editar o valor do caixa</small>
+              </div>
+              <div class="form-group">
+                <label for="valor_caixa">Valor: </label>
+                <input type="text" class="form-control" id="valor_caixa" placeholder="Ex: 10000">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--informação da paginação-->
+    <div class="container">
+      <div class="row">
+        <div class="p-3 mb-2 bg-light text-dark rounded col-lg" style="margin-top: 9px;">
+        <h1>Retirando do caixa</h1>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- conteúdo aqui -->
+    <div class="container">
+      <div class="row">
+        <div class="p-3 mb-2 bg-light text-dark rounded col-lg" style="margin-top: 9px;">
+          <form>
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" class="form-control" id="nome" placeholder="Ex: Eudes" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="data">Data:</label>
+              <input type="date" class="form-control" id="data" name="data">
+            </div>
+            <div class="form-group">
+              <label for="valor">Valor:</label>
+              <input type="text" class="form-control" id="valor" name="valor">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Estou ciente de retirar do caixa</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="bg-light text-center text-lg-start" style="bottom: 0; left: 0; height: 50px; position: fixed; width: 100%;">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">Guilherme Santos</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
