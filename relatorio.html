@@ -78,74 +78,50 @@
       </div>
     </div>
 
-    <!-- Modal de cadastro funcionario-->
-      <div class="modal fade" id="modalCadastroFuncionario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Cadastrando Funcionario</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="nome">Nome:</label>
-                  <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Eudes">
-                </div>
-                <div class="form-group">
-                  <label for="cpf">CPF:</label>
-                  <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Ex: 01005566874">
-                </div>
-                <div class="form-group">
-                  <label for="telefone">Telefone:</label>
-                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Ex: 984636568">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-primary">Salvar Mudanças</button>
-                </div>
-              </form>
-            </div>
+      <!-- Modal de cadastro funcionario-->
+    <div class="modal fade" id="modalCadastroFuncionario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrando Funcionario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Eudes">
+              </div>
+              <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Ex: 01005566874">
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Ex: 984636568">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar Mudanças</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
+    </div>
 
     <!--informação da paginação-->
     <div class="container">
       <div class="row">
         <div class="p-3 mb-2 bg-light text-dark rounded col-lg" style="margin-top: 9px;">
-        <h1>Retirando do caixa</h1>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- conteúdo aqui -->
-    <div class="container">
-      <div class="row">
-        <div class="p-3 mb-2 bg-light text-dark rounded col-lg" style="margin-top: 9px;">
-          <form>
-            <div class="form-group">
-              <label for="nome">Nome:</label>
-              <input type="text" class="form-control" id="nome" placeholder="Ex: Eudes" name="nome">
-            </div>
-            <div class="form-group">
-              <label for="data">Data:</label>
-              <input type="date" class="form-control" id="data" name="data">
-            </div>
-            <div class="form-group">
-              <label for="valor">Valor:</label>
-              <input type="text" class="form-control" id="valor" name="valor">
-            </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Estou ciente de retirar do caixa</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </form>
+          <h1>Relatórios</h1>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-outline-secondary" type="button"><a href="./relatorios/funcionario.html" style="text-decoration: none; color: black">Funcionario</a></button>
+            <button class="btn btn-outline-secondary" type="button"><a href="./relatorios/valorRetirado.html" style="text-decoration: none; color: black">Valor retirado</a></button>
+            <button class="btn btn-outline-secondary" type="button"><a href="./relatorios/geral.html" style="text-decoration: none; color: black">Geral</a></button>
+          </div>
         </div>
       </div>
     </div>
