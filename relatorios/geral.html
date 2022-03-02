@@ -35,12 +35,7 @@
           </li>
         </ul>
       <ul class="navbar-nav">
-          <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-terminal"></i>R$ 250000</a></li>
-          <li class="nav-item"><i class="fas fa-terminal">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInserirCaixa">
-              Inserir caixa
-            </button>
-          </i></li>
+          <li class="nav-item"><a href="#" class="nav-link" id="caixaValor"><i class="fas fa-terminal"></i>R$ </a></li>
       </ul>
           
       </div>
@@ -134,10 +129,10 @@
             <table class="table table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">id</th>
+                    <th scope="col">data da atividade</th>
                     <th scope="col">nome</th>
                     <th scope="col">cpf</th>
-                    <th scope="col">telefone</th>
+                    <th scope="col">valor retirado</th>
                   </tr>
                 </thead>
                 <tbody class="dados">
@@ -164,16 +159,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
+      
         var result;
         // GET request for remote image in node.js
-        var url = "http://localhost:3001/api/v1/funcionario";
+        var url = "http://localhost:3001/api/v1/relatorio/relatorioLog";
         fetch(url, {
             method: 'get'
         }).then(function(response){
             response.json().then((data)=>{
                 console.log(data);
                 data.forEach((elemento, indice)=>{
-                    $(".dados").append("<tr><th>"+elemento.id_funcionario+"</th><td>"+elemento.nome_funcionario+"</td><td>"+elemento.cpf_funcionario+"</td><td>"+elemento.telefone+"</td></tr>");
+                    $(".dados").append("<tr><th>"+elemento.data_atividade+"</th><td>"+elemento.nome_funcionario+"</td><td>"+elemento.cpf_funcionario+"</td><td>"+elemento.valor_retirado+"</td></tr>");
 
                 })
             })
@@ -182,6 +178,12 @@
         })
         
         
+      var getValStorage = JSON.parse(window.localStorage.getItem('user'));
+
+      var valorRetirado = getValStorage.valor_retirado
+
+      $('#caixaValor').append(valorRetirado);
+    
     </script>
   </body>
 </html>

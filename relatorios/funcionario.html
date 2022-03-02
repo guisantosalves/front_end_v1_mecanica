@@ -35,12 +35,7 @@
           </li>
         </ul>
       <ul class="navbar-nav">
-          <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-terminal"></i>R$ 250000</a></li>
-          <li class="nav-item"><i class="fas fa-terminal">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInserirCaixa">
-              Inserir caixa
-            </button>
-          </i></li>
+          <li class="nav-item"><a href="#" class="nav-link"  id="caixaValor"><i class="fas fa-terminal"></i>R$ </a></li>
       </ul>
           
       </div>
@@ -134,97 +129,14 @@
             <table class="table table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome funcionário</th>
+                    <th scope="col">CPF funcionário</th>
+                    <th scope="col">telefone</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                <tbody class="dados">
+                  <!--dados serao colocados dinâmicamentes aqui-->
                 </tbody>
             </table>
         </div>
@@ -245,5 +157,30 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+      var result;
+        // GET request for remote image in node.js
+        var url = "http://localhost:3001/api/v1/funcionario";
+        fetch(url, {
+            method: 'get'
+        }).then(function(response){
+            response.json().then((data)=>{
+                console.log(data);
+                data.forEach((elemento, indice)=>{
+                    $(".dados").append("<tr><th>"+elemento.id_funcionario+"</th><td>"+elemento.nome_funcionario+"</td><td>"+elemento.cpf_funcionario+"</td><td>"+elemento.telefone+"</td></tr>");
+
+                })
+            })
+        }).catch(function(err){
+            console.log(err)
+        });
+
+      var getValStorage = JSON.parse(window.localStorage.getItem('user'));
+
+      var valorRetirado = getValStorage.valor_retirado
+
+      $('#caixaValor').append(valorRetirado);
+    
+    </script>
   </body>
 </html>
