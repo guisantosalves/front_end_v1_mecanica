@@ -89,7 +89,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form method="post" action="http://localhost:3001/api/v1/funcionario/cadastro">
                 <div class="form-group">
                   <label for="nome">Nome:</label>
                   <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Eudes">
@@ -104,7 +104,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  <button type="button" class="btn btn-primary">Salvar Mudanças</button>
+                  <button type="submit" class="btn btn-primary" id="BtnCadastraFunc">Salvar Mudanças</button>
                 </div>
               </form>
             </div>
@@ -130,7 +130,7 @@
           <form>
             <div class="form-group">
               <label for="nome">Nome:</label>
-              <input type="text" class="form-control" id="nome" placeholder="Ex: Eudes" name="nome">
+              <input type="text" class="form-control" id="nome_verificacao" placeholder="Ex: Eudes" name="nome">
             </div>
             <div class="form-group">
               <label for="data">Data:</label>
@@ -144,7 +144,7 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Estou ciente de retirar do caixa</label>
             </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-primary" id="btn_salvar_valor_retirado">Salvar</button>
           </form>
         </div>
       </div>
@@ -187,6 +187,85 @@
       var valorRetirado = getValStorage.valor_retirado
 
       $('#caixaValor').append(valorRetirado);
+
+
+
+      // lógica para inserção no caixa
+      $(document).ready(function(){
+        $('#btn_salvar_valor_retirado').click(function(){
+          var nome_to_verify = $('#nome_verificacao').val();
+          var valor = $('#valor').val();
+          var data_recu = $('#data').val();
+          var result;
+          // GET request for remote image in node.js
+          var url = "http://localhost:3001/api/v1/relatorio/funcionario";
+          fetch(url, {
+              method: 'get'
+          }).then(function(response){
+              response.json().then((data)=>{
+                  console.log(data);
+                  if(!valor) alert("digite um valor válido");
+                  if(!data_recu) alert("digite uma data válida");
+                  var testa = 0;
+                  data.forEach((elemento, indice)=>{
+                    if(nome_to_verify == elemento.nome_funcionario){
+                      
+                      fetch("http://localhost:3001/api/v1/valorRetirado/cadastro",{
+                        // Adding method type
+                        method: "POST",
+                        
+                        // Adding body or contents to send
+                        body: JSON.stringify({
+                            funcionario_id: elemento.id_funcionario,
+                            data: data_recu,
+                            valor: valor
+                        }),
+                        
+                        // Adding headers to the request
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                            'Accept': 'application/json'
+                        }
+                      })// Converting to JSON
+                      .then(response => response.json());
+
+                      var getFromLocalStorage = JSON.parse(window.localStorage.getItem('user'));
+                      var valorFromStorage = parseFloat(getFromLocalStorage.valor_retirado);
+                      var valorFromDBS = parseFloat(valor);
+                      if(valorFromDBS < valorFromStorage){
+                        var result = (valorFromStorage - valorFromDBS);
+                        var convertResult = result.toString();
+                        var newDataToStorage = {
+                          nome: getFromLocalStorage.nome,
+                          valor_retirado: convertResult
+                        }
+
+                        window.localStorage.setItem('user', JSON.stringify(newDataToStorage));
+                        testa = 1;
+                        return testa;
+                      }else{
+                        testa = 0;
+                        return testa;
+                      }
+                      
+                    } 
+                  })
+                  if(testa == 0){
+                    alert("digite um nome já cadastrado ou um valor maior que o caixa");
+                  }else{
+                    alert("cadastrado com sucesso");
+                    window.location.reload();
+                  }
+              })
+          }).catch(function(err){
+              console.log(err)
+          })
+
+        })
+      })
+      
+      
+
     </script>
   </body>
 </html>
