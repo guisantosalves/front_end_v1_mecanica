@@ -232,7 +232,8 @@
                       var getFromLocalStorage = JSON.parse(window.localStorage.getItem('user'));
                       var valorFromStorage = parseFloat(getFromLocalStorage.valor_retirado);
                       var valorFromDBS = parseFloat(valor);
-                      if(valorFromDBS < valorFromStorage){
+                      
+                      if(valorFromDBS < valorFromStorage && valorFromDBS > 0){
                         var result = (valorFromStorage - valorFromDBS);
                         var convertResult = result.toString();
                         var newDataToStorage = {
